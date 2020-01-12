@@ -6,15 +6,6 @@ from langdetect import detect
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 import pandas as pd
 
-# make one file from raw .txt files in a folder
-pathlist = Path(
-    "/home/kseniia/Projects/ALGE/papers-abstracts/").glob("**/*.txt")
-with open("result.txt", "wb") as outfile:
-    for path in pathlist:
-        with open(path, "rb") as infile:
-            outfile.write(infile.read())
-
-
 # function ignoring blank lines
 def nonblank_lines(f):
     for l in f:
@@ -49,7 +40,8 @@ def get_stop_words(stop_file_path):
 # ***COMPUTING IDF***
 
 # list of abstract preprocessed for idf analysis
-with open("/home/kseniia/Projects/ALGE/result_cleaned.txt") as myfile:
+# here is my homepath to the file, change it to your own
+with open("/home/kseniia/Projects/ALGE/abstracts_001_cleaned_1.txt") as myfile:
     idf = []
     for abstract in myfile:
         idf.append(pre_process(abstract))
